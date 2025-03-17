@@ -8,11 +8,27 @@ import 'antd/dist/reset.css';
 
 export const metadata = {
     title: 'Rotate Editor',
-    description: 'Rotate Editor',
+    description: 'A powerful editor with rotation capabilities.',
     icons: {
         icon: '/favicon.ico',
     },
+    keywords: ['editor', 'rotate editor', 'text editing', 'image rotation'],
+    openGraph: {
+        title: 'Rotate Editor - The Ultimate Rotation Tool',
+        description: 'Easily rotate text and images with precision.',
+        url: 'https://vercel.com/paojiaos-projects/20250317',
+        type: 'website',
+        images: [
+            {
+                url: '/favicon.ico',
+                width: 1200,
+                height: 630,
+                alt: 'Rotate Editor Preview',
+            }
+        ]
+    },
 }
+
 
 export default async function RootLayout({children, params: {locale}}: {
     children: React.ReactNode
