@@ -1,0 +1,42 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+    darkMode: 'class',
+    content: [
+        "./app/**/*.{js,ts,jsx,tsx}",
+        "./pages/**/*.{js,ts,jsx,tsx}",
+        "./components/**/*.{js,ts,jsx,tsx}",
+        "./src/**/*.{js,ts,jsx,tsx}",
+    ],
+    theme: {
+        colors: {
+            light: '#FFFFFF',
+            dark: '#000000',
+            'green-1': '#f6ffed',
+            'green-2': '#d9f7be',
+            'green-3': '#b7eb8f',
+            'green-4': '#95de64',
+            'green-5': '#73d13d',
+            'green-6': '#52c41a',
+            'green-7': '#389e0d',
+            'green-8': '#237804',
+            'green-9': '#135200',
+            'green-10': '#092b00',
+        },
+        fontSize: {
+            xs: ['0.75rem', {lineHeight: '1rem'}],
+            sm: ['0.875rem', {lineHeight: '1.25rem'}],
+            base: ['1rem', {lineHeight: '1.5rem'}],
+            lg: ['1.125rem', {lineHeight: '2rem'}],
+            xl: ['1.25rem', {lineHeight: '1.75rem'}],
+            '2xl': ['1.5rem', {lineHeight: '2rem'}],
+            '3xl': ['1.875rem', {lineHeight: '2.25rem'}],
+            '4xl': ['2.25rem', {lineHeight: '2.5rem'}],
+            '5xl': ['3rem', {lineHeight: '1.25'}],
+            '6xl': ['3.75rem', {lineHeight: '1'}],
+            '7xl': ['4.5rem', {lineHeight: '1.25'}],
+            '8xl': ['6rem', {lineHeight: '1'}],
+            '9xl': ['8rem', {lineHeight: '1.25rem'}],
+        },
+    },
+    plugins: [],
+}

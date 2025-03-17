@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+}
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+html:not([data-scroll="0"]) .navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-blend-mode: overlay;
+    opacity: 1.9;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+    transition: 0.4s linear;
+    z-index: 2;
+}
+
+/* FadeInWrapper components */
+.fade-in-wrapper {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}
+
+.fade-in-wrapper.visible {
+    opacity: 1;
+    animation: fadeIn 2s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
