@@ -6,7 +6,7 @@ import {Introduction} from "@/app/components/Home/Introduction";
 
 export default function Home() {
     return (
-        <main>
+        <main className='bg-green-1 pb-36'>
             <FadeInWrapper>
                 <Introduction/>
                 <PDFRotator/>

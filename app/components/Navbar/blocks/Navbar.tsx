@@ -18,17 +18,20 @@ const Navbar = () => {
 
 
     return (
-        <div className="mx-auto p-3 md:p-4 lg:px-8 navbar bg-light dark:bg-dark">
+        <div className="mx-auto p-3 md:p-4 lg:px-8 navbar bg-green-1">
             <div className="relative flex h-12 sm:h-20 items-center">
                 <div className="flex flex-1 items-center justify-between">
                     {/* LOGO */}
-                    <div className="flex flex-shrink-0 items-center gap-8 text-2xl">
+                    <div className="flex flex-shrink-0 items-center gap-4 text-2xl">
                         <Link href={'/'}>
                             <Image src='/logo.svg' alt='logo' width={60} height={60}/>
                         </Link>
+                        <Link href={'/'}>
+                            Rotate PDF
+                        </Link>
                     </div>
                     <div className='hidden lg:flex items-center gap-8'>
-                        <SwitchTheme/>
+                        {/*<SwitchTheme/>*/}
                         <SwitchLanguages/>
                     </div>
 

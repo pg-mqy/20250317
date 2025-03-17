@@ -3,6 +3,7 @@ import React, {ReactNode, useEffect} from "react";
 import Link from "next/link";
 import {CloseOutlined} from "@ant-design/icons";
 import SwitchTheme from "@/app/components/SwitchTheme";
+import Image from "next/image";
 
 interface DrawerProps {
     children: ReactNode;
@@ -31,11 +32,14 @@ const Drawer = ({children, isOpen = false, setIsOpen}: DrawerProps) => {
             >
                 <article className="relative w-340px max-w-lg pb-10 flex flex-col space-y-6 h-full">
                     <header className="px-4 py-4 flex items-center justify-between">
-                        <Link href={'/'}>
-                            <div className="flex flex-shrink-0 items-center">
-                                <SwitchTheme/>
-                            </div>
-                        </Link>
+                        <div className="flex flex-shrink-0 items-center gap-4 text-2xl">
+                            <Link href={'/'}>
+                                <Image src='/logo.svg' alt='logo' width={60} height={60}/>
+                            </Link>
+                            <Link href={'/'}>
+                                Rotate PDF
+                            </Link>
+                        </div>
                         <CloseOutlined className="cursor-pointer text-2xl" onClick={() => setIsOpen(false)}/>
                     </header>
                     <div>

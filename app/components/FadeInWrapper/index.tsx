@@ -22,7 +22,7 @@ export default function FadeInWrapper({children}: FadeInWrapperProps) {
 
         return () => observer.disconnect();
     }, []);
-    console.log(children)
+
     return (
         <div>
             {Array.isArray(children) && (children.map((child: ReactNode, index: number) => (

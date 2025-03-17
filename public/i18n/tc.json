@@ -1,10 +1,16 @@
 {
-  "404": {
-    "404_title": "首頁"
-  },
   "Header": {
     "Language": "語言"
   },
-  "Footer": {},
-  "Home": {}
+  "Home": {
+    "Introduction_title": "旋轉 PDF 頁面",
+    "Introduction_description": "只需點擊頁面即可旋轉。然後，您可以下載修改後的 PDF。",
+    "PDFRotator_title": "點擊上傳或拖放",
+    "PDFRotator_button_rotate": "全部旋轉",
+    "PDFRotator_button_remove": "移除 PDF",
+    "PDFRotator_button_download": "下載"
+  },
+  "404": {
+    "404_title": "返回首頁"
+  }
 }

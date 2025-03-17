@@ -81,12 +81,6 @@ const MenuItem = ({ item }: { item: NavItem }) => {
                         )
                     )}
                 </div>
-                {/*{item.subItems.length > 0 && (*/}
-                {/*    <ChevronDownIcon*/}
-                {/*        className={`w-5 h-5 text-white/60 transition-transform duration-200 group-hover:text-white*/}
-                {/*            ${isOpen ? 'rotate-180' : 'rotate-0'}`}*/}
-                {/*    />*/}
-                {/*)}*/}
             </div>
             {item.subItems.length > 0 && (
                 <div className={`overflow-hidden transition-all duration-200 ease-in-out

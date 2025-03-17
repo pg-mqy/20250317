@@ -1,10 +1,16 @@
 {
-  "404": {
-    "404_title": "首页"
-  },
   "Header": {
     "Language": "语言"
   },
-  "Footer": {},
-  "Home": {}
+  "Home": {
+    "Introduction_title": "旋转 PDF 页面",
+    "Introduction_description": "只需点击页面即可旋转。然后，您可以下载修改后的 PDF。",
+    "PDFRotator_title": "点击上传或拖放",
+    "PDFRotator_button_rotate": "全部旋转",
+    "PDFRotator_button_remove": "移除 PDF",
+    "PDFRotator_button_download": "下载"
+  },
+  "404": {
+    "404_title": "返回首页"
+  }
 }

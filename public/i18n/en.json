@@ -2,8 +2,14 @@
   "Header": {
     "Language": "Language"
   },
-  "Footer": {},
-  "Home": {},
+  "Home": {
+    "Introduction_title": "Rotate PDF Pages",
+    "Introduction_description": "Simply click on a page to rotate it. You can then download your modified PDF.",
+    "PDFRotator_title": "Click to upload or drag and drop",
+    "PDFRotator_button_rotate": "Rotate all",
+    "PDFRotator_button_remove": "Remove PDF",
+    "PDFRotator_button_download": "Download"
+  },
   "404": {
     "404_title": "Back Home"
   }

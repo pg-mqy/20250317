@@ -1,10 +1,16 @@
 {
-  "404": {
-    "404_title": "家に帰る"
-  },
   "Header": {
     "Language": "言語"
   },
-  "Footer": {},
-  "Home": {}
+  "Home": {
+    "Introduction_title": "PDFページを回転",
+    "Introduction_description": "ページをクリックするだけで回転できます。その後、変更したPDFをダウンロードできます。",
+    "PDFRotator_title": "クリックしてアップロード、またはドラッグ＆ドロップ",
+    "PDFRotator_button_rotate": "すべて回転",
+    "PDFRotator_button_remove": "PDFを削除",
+    "PDFRotator_button_download": "ダウンロード"
+  },
+  "404": {
+    "404_title": "ホームに戻る"
+  }
 }

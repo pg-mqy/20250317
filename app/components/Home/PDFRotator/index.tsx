@@ -6,13 +6,18 @@ import {useDropzone} from 'react-dropzone';
 import PDFViewerConfig from "@/app/components/Home/PDFRotator/config/viewerConfig";
 import 'react-pdf/dist/esm/Page/TextLayer.css';
 import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import {CloudUploadOutlined, RotateLeftOutlined, ZoomInOutlined, ZoomOutOutlined} from "@ant-design/icons";
+import {useTranslations} from "next-intl";
+
+type RotationAngle = 90 | 180 | 270;
 
 interface PageRotation {
     pageNumber: number;
-    rotation: 0 | 90 | 180 | 270;
+    rotation: 0 | RotationAngle;
 }
 
 export default function PDFRotator() {
+    const t = useTranslations("Home");
     const [pdfFile, setPdfFile] = useState<File | null>(null);
     const [pageRotations, setPageRotations] = useState<PageRotation[]>([]);
     const [numPages, setNumPages] = useState(0);
@@ -33,13 +38,12 @@ export default function PDFRotator() {
     });
 
     // 单独旋转某一页
-    const rotatePage = (pageNumber: number, angle: 90 | 180 | 270) => {
-        console.log('Rotate page:', pageNumber, 'by', angle)
+    const rotatePage = (pageNumber: number, angle: RotationAngle) => {
         setPageRotations(prev => {
             const newRotations = [...prev];
             const existing = newRotations.find(r => r.pageNumber === pageNumber);
             if (existing) {
-                existing.rotation = ((existing.rotation + angle) % 360) as 0 | 90 | 180 | 270;
+                existing.rotation = ((existing.rotation + angle) % 360) as 0 | RotationAngle;
             } else {
                 newRotations.push({pageNumber, rotation: angle});
             }
@@ -48,14 +52,14 @@ export default function PDFRotator() {
     };
 
     // 旋转所有页面
-    const rotateAllPages = (angle: 90 | 180 | 270) => {
+    const rotateAllPages = (angle: RotationAngle) => {
         setPageRotations(prev => {
             const updatedRotations = [...prev];
 
             for (let i = 1; i <= numPages; i++) {
                 const existing = updatedRotations.find(r => r.pageNumber === i);
                 if (existing) {
-                    existing.rotation = ((existing.rotation + angle) % 360) as 0 | 90 | 180 | 270;
+                    existing.rotation = ((existing.rotation + angle) % 360) as 0 | RotationAngle;
                 } else {
                     updatedRotations.push({pageNumber: i, rotation: angle});
                 }
@@ -96,10 +100,11 @@ export default function PDFRotator() {
             {!pdfFile && (
                 <div className='justify-center items-center flex'>
                     <div {...getRootProps()}
-                         className="border-2 border-dashed rounded-lg w-96 h-64 justify-center items-center flex">
+                         className="border-2 border-dashed rounded-lg w-64 h-96 justify-center items-center flex bg-light cursor-pointer">
                         <div>
                             <input {...getInputProps()} />
-                            <p className="text-gray-600">拖放PDF文件到这里，或点击选择文件</p>
+                            <CloudUploadOutlined className='flex justify-center text-2xl mb-2' />
+                            <p className="text-center">{t('PDFRotator_title')}</p>
                         </div>
                     </div>
                 </div>
@@ -107,30 +112,28 @@ export default function PDFRotator() {
 
             {pdfFile && (
                 <div className="flex flex-col items-center">
-                    <div className="flex gap-4 mb-4">
+                    <div className="flex gap-4 mb-8 flex-wrap">
                         <button
                             onClick={() => rotateAllPages(90)}
-                            className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600"
+                            className="bg-green-4 inline-block rounded-sm px-8 py-3 text-sm font-medium primary-button"
                         >
-                            旋转全部
+                            {t('PDFRotator_button_rotate')}
                         </button>
                         <button
                             onClick={() => setPdfFile(null)}
-                            className="bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-900"
+                            className="inline-block rounded-sm border border-current px-8 py-3 text-sm font-medium primary-button"
                         >
-                            移除 PDF
+                            {t('PDFRotator_button_remove')}
                         </button>
                         <button
                             onClick={() => setScale(prev => Math.min(prev + 0.2, 2))}
-                            className="bg-gray-700 text-white px-3 py-2 rounded hover:bg-gray-800"
                         >
-                            🔍+
+                            <ZoomInOutlined className='text-base bg-green-3 p-3 rounded-full primary-button' />
                         </button>
                         <button
                             onClick={() => setScale(prev => Math.max(prev - 0.2, 0.5))}
-                            className="bg-gray-700 text-white px-3 py-2 rounded hover:bg-gray-800"
                         >
-                            🔍−
+                            <ZoomOutOutlined className='text-base bg-green-3 p-3 rounded-full primary-button' />
                         </button>
                     </div>
 
@@ -143,18 +146,18 @@ export default function PDFRotator() {
                         {Array.from({ length: numPages }, (_, i) => (
                             <div
                                 key={i + 1}
-                                className="relative border rounded-md bg-white shadow-sm flex items-center justify-center overflow-hidden"
+                                className="relative border-2 border-green-2 rounded-md shadow-sm flex items-center justify-center overflow-hidden bg-light"
                             >
                                 <PDFPage
                                     pageNumber={i + 1}
                                     rotate={pageRotations.find(r => r.pageNumber === i + 1)?.rotation || 0}
-                                    width={300 * scale} // 确保缩放后大小受限
+                                    width={256 * scale}
                                 />
                                 <button
-                                    className="absolute top-2 right-2 z-10 bg-orange-500 text-white p-2 rounded-full shadow-md"
+                                    className="absolute top-1 right-1 z-10 p-2 rounded-full shadow-md bg-green-2"
                                     onClick={() => rotatePage(i + 1, 90)}
                                 >
-                                    🔄
+                                    <RotateLeftOutlined className='text-xl' />
                                 </button>
                                 <p className="absolute bottom-2 text-center text-sm">{i + 1}</p>
                             </div>
@@ -164,9 +167,9 @@ export default function PDFRotator() {
                     {/* 下载按钮 */}
                     <button
                         onClick={rotatePDF}
-                        className="mt-6 bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600"
+                        className="bg-green-3 mt-16 inline-block rounded-sm px-8 py-3 text-sm font-medium primary-button"
                     >
-                        下载
+                        {t('PDFRotator_button_download')}
                     </button>
                 </div>
             )}

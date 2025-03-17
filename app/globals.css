@@ -24,6 +24,20 @@ html:not([data-scroll="0"]) .navbar {
     z-index: 2;
 }
 
+.primary-button {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, outline 0.3s ease;
+}
+
+.primary-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.primary-button:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(0, 255, 136, 0.5);
+}
+
 /* FadeInWrapper components */
 .fade-in-wrapper {
     opacity: 0;
