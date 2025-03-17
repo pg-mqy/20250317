@@ -1,13 +1,15 @@
 import FadeInWrapper from "@/app/components/FadeInWrapper";
+
+import PDFRotator from "@/app/components/Home/PDFRotator";
 import {Introduction} from "@/app/components/Home/Introduction";
-import {RotateEditor} from "@/app/components/Home/RotateEditor";
+
 
 export default function Home() {
     return (
         <main>
             <FadeInWrapper>
                 <Introduction/>
-                <RotateEditor/>
+                <PDFRotator/>
             </FadeInWrapper>
         </main>
     )
